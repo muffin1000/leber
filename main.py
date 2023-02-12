@@ -1,3 +1,4 @@
+#! usr/local/bin/python3
 from  setting import *
 import commands.add as add
 import commands.rm as rm
