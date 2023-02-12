@@ -12,7 +12,7 @@ class DB:
     def stop_submit(self, user_id: int):
         with sqlite3.connect(dbname) as db:
             cur = db.cursor()
-            cur.execute(f'UPDATE {tablename} SET bool = 0 WHERE "disocrd_id" = {user_id}')
+            cur.execute(f'UPDATE {tablename} SET bool = 0 WHERE "discord_id" = {user_id}')
             db.commit()
 
     def get_all_data(self):
@@ -25,7 +25,7 @@ class DB:
     def remove_data(self, user_id):
         with sqlite3.connect(dbname) as db:
             cur = db.cursor()
-            cur.execute(f'DELETE FROM {tablename} WHERE "disocrd_id" = {user_id}')
+            cur.execute(f'DELETE FROM {tablename} WHERE "discord_id" = {user_id}')
     
     def init_bool(self):
         with sqlite3.connect(dbname) as db:
