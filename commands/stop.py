@@ -8,7 +8,7 @@ async def stop(interaction: discord.Interaction):
     try:
         db = DB()
         db.stop_submit(interaction.user.id)
-        print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO    {interaction.user.name} stops submit')
+        logger.log(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO    {interaction.user.name} stops submit')
         embed = discord.Embed(
             title='成功',
             description='検温は停止されます',
@@ -16,7 +16,7 @@ async def stop(interaction: discord.Interaction):
         )
         await interaction.response.send_message(embed=embed)        
     except Exception as e:
-        print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR    change failed {interaction.user.name} data.{e}')
+        logger.log(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR    change failed {interaction.user.name} data.\n{e}')
         embed = discord.Embed(
             title='エラー',
             description='停止に失敗しました',
