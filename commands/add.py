@@ -20,7 +20,7 @@ async def login(interaction: discord.Interaction, phone: str, passwd: str):
         time.sleep(1)
         db = DB()
         if any([item[1] == interaction.user.id for item in db.get_all_data()]):
-            logger.log(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     already {interaction.user.name} is in DB')
+            logger.log(logging.ERROR, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     already {interaction.user.name} is in DB')
             embed = discord.Embed(
                 title='エラー',
                 description='すでにDBに追加されています',
@@ -30,7 +30,7 @@ async def login(interaction: discord.Interaction, phone: str, passwd: str):
 
         else:
             db.add_to_db(user_data.company_id, interaction.user.id, user_data.patients_id, user_data.token, user_data.phone, user_data.passwd)
-            logger.log(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO     add db {interaction.user.name}')
+            logger.log(logging.INFO, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO     add db {interaction.user.name}')
             embed = discord.Embed(
                 title='成功',
                 description='DBに追加されました。',
@@ -39,7 +39,7 @@ async def login(interaction: discord.Interaction, phone: str, passwd: str):
             await interaction.edit_original_response(embed=embed)
 
     else:
-        logger.log(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     {user_data.error}')
+        logger.log(logging.ERROR, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     {user_data.error}')
         embed = discord.Embed(
             title='エラー',
             description=user_data.error,

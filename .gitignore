@@ -2,3 +2,4 @@ __pycache__
 setting.py
 .DS_Store
 *.db
+test.py
