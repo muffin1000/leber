@@ -25,7 +25,7 @@ class DB:
     def remove_data(self, user_id):
         with sqlite3.connect(dbname) as db:
             cur = db.cursor()
-            cur.execute(f'DELETE FROM {tablename} WHERE discord_id = ?', (user_id))
+            cur.execute(f'DELETE FROM {tablename} WHERE discord_id = ?', (user_id,))
             db.commit()
     
     def init_bool(self):
