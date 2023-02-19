@@ -9,7 +9,7 @@ async def remove(interaction: discord.Interaction):
     db = DB()
     try:
         db.remove_data(interaction.user.id)
-        logger.log(logging.INFO, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO    {interaction.user.name} data was removed from DB')
+        print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO    {interaction.user.name} data was removed from DB')
         embed = discord.Embed(
             title='成功',
             description='DBからデータ削除をしました',
@@ -17,7 +17,7 @@ async def remove(interaction: discord.Interaction):
         )
         await interaction.response.send_message(embed=embed)
     except Exception as e:
-        logger.log(logging.ERROR, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR    removing failed {interaction.user.name} data.\n{e}')
+        print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR    removing failed {interaction.user.name} data.\n{e}')
         embed = discord.Embed(
             title='エラー',
             description='DBからのデータ削除に失敗しました。',

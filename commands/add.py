@@ -10,7 +10,7 @@ import time
 async def login(interaction: discord.Interaction, phone: str, passwd: str):
     user_data = Login(interaction.user.id, phone, passwd)
     if user_data.error is None:
-        logger.log(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO     get {interaction.user.name} token successfully')
+        print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO     get {interaction.user.name} token successfully')
         embed = discord.Embed(
             title='成功',
             description='ログインに成功',
@@ -20,7 +20,7 @@ async def login(interaction: discord.Interaction, phone: str, passwd: str):
         time.sleep(1)
         db = DB()
         if any([item[1] == interaction.user.id for item in db.get_all_data()]):
-            logger.log(logging.ERROR, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     already {interaction.user.name} is in DB')
+            print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     already {interaction.user.name} is in DB')
             embed = discord.Embed(
                 title='エラー',
                 description='すでにDBに追加されています',
@@ -30,7 +30,7 @@ async def login(interaction: discord.Interaction, phone: str, passwd: str):
 
         else:
             db.add_to_db(user_data.company_id, interaction.user.id, user_data.patients_id, user_data.token, user_data.phone, user_data.passwd)
-            logger.log(logging.INFO, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO     add db {interaction.user.name}')
+            print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} INFO     add db {interaction.user.name}')
             embed = discord.Embed(
                 title='成功',
                 description='DBに追加されました。',
@@ -39,7 +39,7 @@ async def login(interaction: discord.Interaction, phone: str, passwd: str):
             await interaction.edit_original_response(embed=embed)
 
     else:
-        logger.log(logging.ERROR, f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     {user_data.error}')
+        print(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ERROR     {user_data.error}')
         embed = discord.Embed(
             title='エラー',
             description=user_data.error,
