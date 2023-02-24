@@ -1,4 +1,3 @@
-import psutil
 import requests
 
 def get_server_status():
@@ -6,5 +5,4 @@ def get_server_status():
     re = requests.post(url)
     return re.status_code
 
-load = f'{psutil.cpu_percent(interval=1)}%'
 server_status = get_server_status()
