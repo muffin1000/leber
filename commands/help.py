@@ -6,24 +6,28 @@ from setting import *
 )
 async def help(interaction: discord.Interaction):
     embed = discord.Embed(
-        title='helpコマンド',
-        description='helpコマンドの表示',
+        title='help',
+        description='helpの表示',
         color=discord.Colour.blue()
     )
     embed.add_field(
-        name='addコマンド',
-        value='自動送信に参加'
+        name='add',
+        value='自動送信に参加',
+        inline=False
     )
     embed.add_field(
-        name='rmコマンド',
-        value='自動送信から削除(個人情報は削除されます)'
+        name='rm',
+        value='自動送信から削除(個人情報は削除されます)',
+        inline=False
     )
     embed.add_field(
-        name='stopコマンド',
-        value='その日の検温の自動送信の停止'
+        name='stop',
+        value='その日の検温の自動送信の停止',
+        inline=False
     )
     embed.add_field(
-        name='statusコマンド',
-        value='BotサーバとLEBERの状況を表示'
+        name='status',
+        value='BotサーバとLEBERの状況を表示',
+        inline=False
     )
     await interaction.response.send_message(embed=embed)
