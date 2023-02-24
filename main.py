@@ -3,6 +3,7 @@ from  setting import *
 import commands.add as add
 import commands.rm as rm
 import commands.stop as stop
+import commands.status as status
 from auto_submit import *
 
 @client.event
