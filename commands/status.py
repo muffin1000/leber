@@ -11,7 +11,7 @@ async def status(interaction: discord.Interaction):
         title='Status',
         description=
         f'BotサーバのCPU使用率: {psutil.cpu_percent(interval=1)}%\
-        \nBotサーバのメモリ使用率: {psutil.virtual_memory().percent}\
+        \nBotサーバのメモリ使用率: {psutil.virtual_memory().percent}%\
         \nLEBERの状況: {server_status}',
         color=discord.Colour.blue()
     )
