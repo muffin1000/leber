@@ -1,6 +1,6 @@
 from setting import *
 from lib.status import *
-
+import psutil
 @tree.command(
     name='status',
     description='ステータスの確認'
