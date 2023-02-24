@@ -7,10 +7,9 @@ from lib.status import *
 )
 async def status(interaction: discord.Interaction):
     print(f'status command from {interaction.user.id}')
-    status = Status()
     embed = discord.Embed(
         title='Status',
-        description=f'BotサーバのCPU使用率: {status.load}\nLEBERの状況{status.server_status}',
+        description=f'BotサーバのCPU使用率: {load}\nLEBERの状況: {server_status}',
         color=discord.Colour.blue()
     )
     await interaction.response.send_message(embed=embed)
