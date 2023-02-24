@@ -11,7 +11,7 @@ async def auto_submit():
         for item in db.get_all_data():
             submit = Submit(*item[:4])
             if item[-1]: submit.exec()
-            if submit.error is None && item[-1]:
+            if submit.error is None and item[-1]:
                 user = await client.fetch_user(item[1])
                 embed = discord.Embed(
                     title='成功',
