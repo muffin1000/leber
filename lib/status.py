@@ -13,6 +13,3 @@ class Status:
         url = 'https://api.leber11.com/v9//users/sign_in'
         re = requests.post(url)
         return re.status_code
-
-
-print(Status.server_status.value)
