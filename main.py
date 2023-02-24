@@ -4,6 +4,7 @@ import commands.add as add
 import commands.rm as rm
 import commands.stop as stop
 import commands.status as status
+import commands.help as help
 from auto_submit import *
 
 @client.event
