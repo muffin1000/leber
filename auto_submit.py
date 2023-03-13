@@ -2,7 +2,7 @@ from setting import *
 from lib.db import DB
 from lib.leber import Submit
 from datetime import datetime
-
+import time
 @tasks.loop(seconds=60)
 @client.event
 async def auto_submit():
@@ -27,4 +27,5 @@ async def auto_submit():
                     color=discord.Color.red()
                 )
                 await user.send(embed=embed)
+            time.sleep(1)
         db.init_bool()
